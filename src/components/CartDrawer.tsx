@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { X, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -171,13 +172,14 @@ export default function CartDrawer() {
                   </span>
                 </div>
 
-                <button
-                  onClick={() => alert("Proceeding to Checkout! Thank you for choosing PLUMO.")}
-                  className="w-full bg-[#141414] hover:bg-black text-white py-4 rounded-full font-semibold text-base flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]"
+                <Link
+                  href="/checkout"
+                  onClick={closeCart}
+                  className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white py-4 rounded-full font-semibold text-base flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]"
                 >
-                  <span>Checkout Now</span>
+                  <span>Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
                 <p className="text-center text-[11px] text-neutral-500">
                   Tax included. 30-day squishy glow guarantee.
                 </p>

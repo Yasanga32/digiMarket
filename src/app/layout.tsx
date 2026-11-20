@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "PLUMO® | Skin, but juicier.",
-  description: "Jelly-textured skincare and squishy colour that plumps, bounces and glows. Clinically proven, fragrance-free, made for every skin type.",
+  title: "PLUMO Digital | AI Accounts & Software Subscriptions",
+  description: "Get instant access to Google AI Pro, Antigravity AI, Claude, and developer tools with immediate activation and 24/7 WhatsApp support.",
 };
 
 export default function RootLayout({
@@ -21,8 +22,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[#FAF7F2] text-[#141414] antialiased selection:bg-[#B83226] selection:text-white">
+      <body className="min-h-screen bg-[#FAF7F2] text-[#141414] antialiased selection:bg-[#2563EB] selection:text-white">
         {children}
+        {/* Global Sticky WhatsApp Floating Button */}
+        <WhatsAppButton />
       </body>
     </html>
   );
