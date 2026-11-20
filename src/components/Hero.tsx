@@ -2,43 +2,45 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight, Star, Pause, Play, Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Star, Pause, Play, Check, Sparkles, Terminal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 
 const storySlides = [
   {
-    id: "squish-mask",
-    name: "Overnight Squish Mask",
-    tagline: "Hyaluronic sleep mask · wake up bouncy",
-    price: 36,
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=85",
-    thumb: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=200&q=80",
-    badge: "Best Seller",
+    id: "google-ai-pro",
+    name: "Google AI Pro",
+    tagline: "Gemini Advanced · 2TB Cloud · 18M Dedicated",
+    priceLKR: 1990,
+    priceUSD: 6.99,
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
+    thumb: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80",
+    badge: "Bestseller · Instant Delivery",
   },
   {
-    id: "glaze-tint",
-    name: "Glaze Lip Squish Tint",
-    tagline: "Peptide sheer jelly stain · high shine",
-    price: 22,
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=1200&q=85",
-    thumb: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=200&q=80",
-    badge: "Viral Favourite",
+    id: "claude-pro",
+    name: "Claude Pro / Sonnet 3.7",
+    tagline: "Top Coding Model · High Context · 3M Dedicated",
+    priceLKR: 2990,
+    priceUSD: 9.99,
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=85",
+    thumb: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=200&q=80",
+    badge: "Developer Favorite",
   },
 ];
 
 const customerAvatars = [
   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80",
   "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&h=120&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80",
 ];
 
 export default function Hero() {
   const { addItem } = useCart();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [addedAnimation, setAddedAnimation] = useState(false);
 
   // Auto-advance story slides if playing
   useEffect(() => {
@@ -50,18 +52,6 @@ export default function Hero() {
   }, [isPlaying, currentSlide]);
 
   const activeProduct = storySlides[currentSlide];
-
-  const handleAddToCart = () => {
-    addItem({
-      id: activeProduct.id,
-      name: activeProduct.name,
-      subtitle: activeProduct.tagline,
-      price: activeProduct.price,
-      image: activeProduct.thumb,
-    });
-    setAddedAnimation(true);
-    setTimeout(() => setAddedAnimation(false), 1600);
-  };
 
   return (
     <section className="relative overflow-hidden pt-6 pb-16 md:pt-10 md:pb-24">
@@ -77,11 +67,11 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <h1 className="tracking-tight select-none">
-                <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[7.6rem] leading-[0.85] uppercase text-[#141414] block">
-                  SKIN, BUT
+                <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[7.6rem] leading-[0.85] uppercase text-[#0F172A] block">
+                  CODE, BUT
                 </span>
-                <span className="font-editorial italic font-normal text-6xl sm:text-7xl md:text-8xl lg:text-[7.6rem] leading-[0.92] text-[#B83226] block -mt-1 sm:-mt-2">
-                  juicier.
+                <span className="font-editorial italic font-normal text-6xl sm:text-7xl md:text-8xl lg:text-[7.6rem] leading-[0.92] text-[#2563EB] block -mt-1 sm:-mt-2">
+                  faster.
                 </span>
               </h1>
             </motion.div>
@@ -91,10 +81,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-6 text-base sm:text-lg md:text-[1.2rem] text-[#3F3D39] max-w-lg leading-relaxed font-normal"
+              className="mt-6 text-base sm:text-lg md:text-[1.2rem] text-[#334155] max-w-lg leading-relaxed font-normal"
             >
-              Jelly-textured skincare and squishy colour that plumps, bounces and glows.
-              Clinically proven, fragrance-free, made for every skin type.
+              Instant-activation AI accounts, premium developer subscriptions, and software licenses.
+              Verified private credentials, zero wait time, guaranteed replacement warranty.
             </motion.p>
 
             {/* Primary Action Button */}
@@ -102,15 +92,22 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 sm:mt-10 flex items-center gap-4"
+              className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
             >
               <a
-                href="#shop"
-                className="group relative inline-flex items-center gap-3 bg-[#141414] hover:bg-black text-white px-8 py-4 rounded-full font-medium text-base tracking-tight shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                href="#bestsellers"
+                className="group relative inline-flex items-center gap-3 bg-[#0F172A] hover:bg-black text-white px-8 py-4 rounded-full font-medium text-base tracking-tight shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Shop bestsellers</span>
+                <span>Browse all software</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
+
+              <Link
+                href="/my-accounts"
+                className="inline-flex items-center gap-2 bg-white border border-neutral-300 hover:border-black text-neutral-800 px-6 py-4 rounded-full font-semibold text-base transition-colors shadow-2xs"
+              >
+                <span>My Accounts</span>
+              </Link>
             </motion.div>
 
             {/* Social Proof / Reviews Section */}
@@ -141,21 +138,21 @@ export default function Hero() {
               {/* Stars & Text */}
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <div className="flex items-center text-[#B83226]">
+                  <div className="flex items-center text-[#2563EB]">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-[#B83226] text-[#B83226]" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-[#2563EB] text-[#2563EB]" />
                     ))}
                   </div>
-                  <span className="font-bold text-sm text-[#141414]">4.9/5</span>
+                  <span className="font-bold text-sm text-[#0F172A]">4.9/5</span>
                 </div>
                 <span className="text-xs sm:text-[13px] text-neutral-600 font-normal">
-                  from 12,400+ squishy reviews
+                  from 18,200+ verified activations
                 </span>
               </div>
             </motion.div>
           </div>
 
-          {/* ================= RIGHT COLUMN: Interactive Media Card ================= */}
+          {/* ================= RIGHT COLUMN: Interactive Terminal / Media Card ================= */}
           <div className="lg:col-span-6 flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
@@ -164,7 +161,7 @@ export default function Hero() {
               className="w-full max-w-xl relative"
             >
               {/* Outer Tablet / Story Viewer Bezel */}
-              <div className="relative rounded-[2.2rem] sm:rounded-[2.75rem] border-[6px] sm:border-[8px] border-[#66686C]/40 bg-[#141414] shadow-2xl overflow-hidden aspect-[4/3] sm:aspect-[1.15/1]">
+              <div className="relative rounded-[2.2rem] sm:rounded-[2.75rem] border-[6px] sm:border-[8px] border-slate-700/30 bg-[#0F172A] shadow-2xl overflow-hidden aspect-[4/3] sm:aspect-[1.15/1]">
                 
                 {/* Background Hero Image */}
                 <AnimatePresence mode="wait">
@@ -182,12 +179,12 @@ export default function Hero() {
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 600px"
-                      className="object-cover object-center filter brightness-[0.98] contrast-[1.03]"
+                      className="object-cover object-center filter brightness-[0.75] contrast-[1.1]"
                     />
                     {/* Top gradient for story header visibility */}
-                    <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/80 via-black/30 to-transparent pointer-events-none" />
                     {/* Bottom gradient for badge contrast */}
-                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
                   </motion.div>
                 </AnimatePresence>
 
@@ -226,11 +223,11 @@ export default function Hero() {
                   {/* Header info & Pause button */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-full bg-[#B83226] flex items-center justify-center text-white font-bold text-xs shadow-md border border-white/40">
-                        P
+                      <div className="w-7 h-7 rounded-full bg-[#2563EB] flex items-center justify-center text-white font-bold text-xs shadow-md border border-white/40">
+                        D
                       </div>
                       <div className="flex items-center gap-1.5 text-white drop-shadow">
-                        <span className="font-bold text-sm tracking-tight">plumo</span>
+                        <span className="font-bold text-sm tracking-tight">digi</span>
                         <span className="text-white/80 text-sm font-normal">
                           {activeProduct.name}
                         </span>
@@ -239,7 +236,7 @@ export default function Hero() {
 
                     <button
                       onClick={() => setIsPlaying(!isPlaying)}
-                      className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-all shadow-sm"
+                      className="w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md flex items-center justify-center text-white transition-all shadow-sm"
                       aria-label={isPlaying ? "Pause story" : "Play story"}
                     >
                       {isPlaying ? (
@@ -261,14 +258,8 @@ export default function Hero() {
                   <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/80 flex items-center justify-between gap-3 sm:gap-4 transition-transform">
                     {/* Left: Thumbnail & Info */}
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-neutral-100 flex-shrink-0 border border-neutral-200/60 shadow-sm">
-                        <Image
-                          src={activeProduct.thumb}
-                          alt={activeProduct.name}
-                          fill
-                          sizes="60px"
-                          className="object-cover"
-                        />
+                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-neutral-900 flex-shrink-0 border border-neutral-200/60 shadow-sm flex items-center justify-center text-white">
+                        <Sparkles className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-bold text-sm sm:text-base text-neutral-900 truncate">
@@ -278,30 +269,22 @@ export default function Hero() {
                           {activeProduct.tagline}
                         </p>
                         <p className="font-bold text-sm sm:text-base text-neutral-900 mt-0.5">
-                          ${activeProduct.price}
+                          LKR {activeProduct.priceLKR.toLocaleString()}{" "}
+                          <span className="text-xs font-normal text-neutral-500">
+                            (${activeProduct.priceUSD})
+                          </span>
                         </p>
                       </div>
                     </div>
 
-                    {/* Right: Red CTA Button */}
-                    <button
-                      onClick={handleAddToCart}
-                      className={`flex-shrink-0 bg-[#B83226] hover:bg-[#9E281F] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold tracking-tight transition-all duration-200 active:scale-95 shadow-md flex items-center gap-1.5 ${
-                        addedAnimation ? "bg-emerald-600 hover:bg-emerald-700" : ""
-                      }`}
+                    {/* Right: Blue CTA Button */}
+                    <Link
+                      href={`/checkout?plan=${activeProduct.id}`}
+                      className="flex-shrink-0 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold tracking-tight transition-all duration-200 active:scale-95 shadow-md flex items-center gap-1.5"
                     >
-                      {addedAnimation ? (
-                        <>
-                          <span>Added</span>
-                          <Check className="w-4 h-4 stroke-[3]" />
-                        </>
-                      ) : (
-                        <>
-                          <span>Shop</span>
-                          <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                        </>
-                      )}
-                    </button>
+                      <span>Choose Plan</span>
+                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                    </Link>
                   </div>
                 </motion.div>
               </div>
@@ -309,8 +292,8 @@ export default function Hero() {
               {/* Bottom Subtle Tag */}
               <div className="flex justify-end mt-3 pr-2">
                 <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500 font-medium bg-neutral-100/70 backdrop-blur-sm px-2.5 py-1 rounded-md">
-                  <span className="w-2 h-2 rounded-full bg-[#B83226]" />
-                  Skin, but juicier ritual
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  Instant automated delivery active
                 </span>
               </div>
             </motion.div>

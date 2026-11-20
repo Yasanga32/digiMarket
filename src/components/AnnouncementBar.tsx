@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 
 export default function AnnouncementBar() {
   const announcements = [
-    "CLEAN • VEGAN • DERM-TESTED",
-    "FREE SHIPPING OVER $45",
-    "FREE MINI JELLY TINT WITH EVERY ORDER",
-    "AUTUMN SALE — 20% OFF THE WHOLE ROUTINE",
+    "INSTANT DISPATCH VIA WHATSAPP",
+    "100% REPLACEMENT WARRANTY",
+    "GOOGLE AI PRO & CHATGPT PLUS IN STOCK",
+    "USE CODE DIGI10 FOR 10% OFF",
+    "24/7 LIVE ACTIVATION SUPPORT",
   ];
 
-  // Repeat for continuous seamless loop
   const tickerItems = [...announcements, ...announcements, ...announcements, ...announcements];
 
   return (
-    <div className="bg-[#B83226] text-white text-xs md:text-[13px] font-semibold tracking-wider uppercase py-2 overflow-hidden select-none border-b border-[#9E281F]">
+    <div className="bg-[#0F172A] text-white text-xs md:text-[13px] font-semibold tracking-wider uppercase py-2.5 overflow-hidden select-none border-b border-neutral-800">
       <motion.div
         className="flex whitespace-nowrap items-center w-max"
         animate={{ x: ["0%", "-50%"] }}
@@ -27,8 +27,8 @@ export default function AnnouncementBar() {
       >
         {tickerItems.map((text, idx) => (
           <div key={idx} className="flex items-center">
-            <span className="mx-4">{text}</span>
-            <span className="text-white/80 text-sm">✹</span>
+            <span className="mx-4 text-neutral-200">{text}</span>
+            <span className="text-[#2563EB] text-sm">✹</span>
           </div>
         ))}
       </motion.div>

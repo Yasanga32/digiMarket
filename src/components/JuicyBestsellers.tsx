@@ -3,79 +3,88 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Star, Plus } from "lucide-react";
+import { ArrowRight, Star, Plus, Sparkles, Code2, Cpu, Laptop } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 
-type Category = "All" | "Skincare" | "Makeup" | "Sets";
+type Category = "All" | "AI Models" | "Developer Tools" | "Productivity";
 
 interface Product {
   id: string;
   name: string;
-  category: "Skincare" | "Makeup" | "Sets";
-  price: number;
+  category: "AI Models" | "Developer Tools" | "Productivity";
+  priceLKR: number;
+  priceUSD: number;
   subtitle: string;
   rating: number;
   reviews: string;
   image: string;
   badge?: {
     text: string;
-    type: "red" | "dark";
+    type: "blue" | "dark" | "emerald";
   };
 }
 
 const products: Product[] = [
   {
-    id: "plump-drops",
-    name: "Plump Drops",
-    category: "Skincare",
-    price: 38,
-    subtitle: "5% peptide serum · bounce + glow",
+    id: "google-ai-pro",
+    name: "Google AI Pro 18M",
+    category: "AI Models",
+    priceLKR: 1990,
+    priceUSD: 6.99,
+    subtitle: "Gemini Advanced · 2TB Cloud Storage · Dedicated",
     rating: 4.9,
-    reviews: "2,184",
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85",
+    reviews: "3,820",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=700&q=85",
     badge: {
       text: "Bestseller",
-      type: "red",
+      type: "blue",
     },
   },
   {
-    id: "jelly-tint",
-    name: "Jelly Tint",
-    category: "Makeup",
-    price: 22,
-    subtitle: "Squishy colour that actually lasts",
+    id: "chatgpt-plus",
+    name: "ChatGPT Plus & GPT-4o",
+    category: "AI Models",
+    priceLKR: 2750,
+    priceUSD: 9.5,
+    subtitle: "GPT-4o Voice, Canvas & DALL-E · 1-Month",
     rating: 4.8,
-    reviews: "3,642",
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=85",
+    reviews: "4,190",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=85",
     badge: {
-      text: "Limited",
+      text: "Limited Stock",
       type: "dark",
     },
   },
   {
-    id: "jelly-cleanser",
-    name: "Jelly Cleanser",
-    category: "Skincare",
-    price: 26,
-    subtitle: "Melts everything, strips nothing",
+    id: "claude-pro",
+    name: "Claude Pro / Sonnet 3.7",
+    category: "AI Models",
+    priceLKR: 2990,
+    priceUSD: 9.99,
+    subtitle: "High-Context Coding Model · Priority Compute",
     rating: 4.9,
-    reviews: "1,532",
-    image: "https://images.unsplash.com/photo-1512290900672-1f55b9e075c3?auto=format&fit=crop&w=700&q=85",
+    reviews: "2,410",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=700&q=85",
+    badge: {
+      text: "Top Rated",
+      type: "emerald",
+    },
   },
   {
-    id: "cloud-barrier-cream",
-    name: "Cloud Barrier Cream",
-    category: "Skincare",
-    price: 42,
-    subtitle: "Ceramide + oat · calm, cushioned skin",
+    id: "copilot-dev",
+    name: "GitHub Copilot + JetBrains",
+    category: "Developer Tools",
+    priceLKR: 2400,
+    priceUSD: 8.5,
+    subtitle: "All-IDE AI Code Assistant · Private License",
     rating: 4.8,
-    reviews: "1,213",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=85",
+    reviews: "1,980",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=85",
   },
 ];
 
-const categories: Category[] = ["All", "Skincare", "Makeup", "Sets"];
+const categories: Category[] = ["All", "AI Models", "Developer Tools", "Productivity"];
 
 export default function JuicyBestsellers() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
@@ -93,19 +102,19 @@ export default function JuicyBestsellers() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-6">
           <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1">
-            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-[3.5rem] tracking-tight uppercase text-[#141414]">
-              THE JUICY ONES
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-[3.5rem] tracking-tight uppercase text-[#0F172A]">
+              TRENDING SOFTWARE
             </h2>
-            <span className="font-editorial italic font-normal text-3xl sm:text-4xl md:text-[3.2rem] text-[#B83226]">
-              (bestsellers)
+            <span className="font-editorial italic font-normal text-3xl sm:text-4xl md:text-[3.2rem] text-[#2563EB]">
+              (best value)
             </span>
           </div>
 
           <Link
-            href="#shop"
-            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#141414] hover:text-[#B83226] transition-colors"
+            href="/#bestsellers"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0F172A] hover:text-[#2563EB] transition-colors"
           >
-            <span>Shop all 24</span>
+            <span>View all 24 tools</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -127,7 +136,7 @@ export default function JuicyBestsellers() {
                 {isActive && (
                   <motion.div
                     layoutId="activeFilterPill"
-                    className="absolute inset-0 bg-[#141414] rounded-full"
+                    className="absolute inset-0 bg-[#0F172A] rounded-full"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -151,13 +160,13 @@ export default function JuicyBestsellers() {
                 className="group flex flex-col cursor-pointer"
               >
                 {/* Product Image Frame */}
-                <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-white border border-black/[0.04] shadow-sm transition-all duration-300 group-hover:shadow-md">
+                <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-neutral-900 border border-black/[0.06] shadow-sm transition-all duration-300 group-hover:shadow-md">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter brightness-[0.85] contrast-[1.1]"
                   />
 
                   {/* Badge */}
@@ -165,9 +174,11 @@ export default function JuicyBestsellers() {
                     <div className="absolute top-3 left-3 z-10">
                       <span
                         className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm text-white ${
-                          product.badge.type === "red"
-                            ? "bg-[#B83226]"
-                            : "bg-[#451421]"
+                          product.badge.type === "blue"
+                            ? "bg-[#2563EB]"
+                            : product.badge.type === "emerald"
+                            ? "bg-emerald-600"
+                            : "bg-[#0F172A]"
                         }`}
                       >
                         {product.badge.text}
@@ -175,34 +186,26 @@ export default function JuicyBestsellers() {
                     </div>
                   )}
 
-                  {/* Quick Add Button Overlay */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      addItem({
-                        id: product.id,
-                        name: product.name,
-                        subtitle: product.subtitle,
-                        price: product.price,
-                        image: product.image,
-                      });
-                    }}
-                    className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/95 hover:bg-[#B83226] text-neutral-900 hover:text-white shadow-md flex items-center justify-center transition-all duration-200 opacity-90 group-hover:opacity-100 group-hover:scale-105"
-                    aria-label={`Add ${product.name} to bag`}
+                  {/* Quick Buy Button Overlay */}
+                  <Link
+                    href={`/checkout?plan=${product.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/95 hover:bg-[#2563EB] text-neutral-900 hover:text-white shadow-md text-xs font-bold transition-all duration-200 opacity-90 group-hover:opacity-100 group-hover:scale-105 flex items-center gap-1"
                   >
-                    <Plus className="w-4 h-4 stroke-[2.5]" />
-                  </button>
+                    <span>Get Plan</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
 
                 {/* Details */}
                 <div className="mt-3.5 flex flex-col">
                   {/* Name & Price Row */}
                   <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="font-bold text-sm sm:text-base text-[#141414] tracking-tight group-hover:text-[#B83226] transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base text-[#0F172A] tracking-tight group-hover:text-[#2563EB] transition-colors">
                       {product.name}
                     </h3>
-                    <span className="font-bold text-sm sm:text-base text-[#141414]">
-                      ${product.price}
+                    <span className="font-bold text-sm sm:text-base text-[#0F172A]">
+                      LKR {product.priceLKR.toLocaleString()}
                     </span>
                   </div>
 
@@ -213,13 +216,13 @@ export default function JuicyBestsellers() {
 
                   {/* Rating Stars & Count */}
                   <div className="flex items-center gap-1.5 mt-1.5">
-                    <div className="flex items-center text-[#B83226]">
+                    <div className="flex items-center text-[#2563EB]">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-[#B83226] text-[#B83226]" />
+                        <Star key={i} className="w-3 h-3 fill-[#2563EB] text-[#2563EB]" />
                       ))}
                     </div>
                     <span className="text-[11px] text-neutral-500 font-medium">
-                      {product.rating} ({product.reviews})
+                      {product.rating} ({product.reviews} activations)
                     </span>
                   </div>
                 </div>

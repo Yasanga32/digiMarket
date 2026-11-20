@@ -28,11 +28,11 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([
     {
-      id: "squish-mask",
-      name: "Overnight Squish Mask",
-      subtitle: "Hyaluronic sleep mask · wake up bouncy",
-      price: 36,
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+      id: "google-ai-pro",
+      name: "Google AI Pro (18 Months)",
+      subtitle: "Gemini Advanced · 2TB Cloud · Instant Activation",
+      price: 1990,
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80",
       quantity: 1,
     },
   ]);
