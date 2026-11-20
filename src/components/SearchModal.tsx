@@ -10,11 +10,12 @@ interface SearchModalProps {
 }
 
 const suggestedTags = [
-  "Overnight Squish Mask",
-  "Jelly Tint",
-  "Hyaluronic Plumper",
-  "Barrier Cream",
-  "Glow Drops",
+  "Google AI Pro 18M",
+  "ChatGPT Plus & GPT-4o",
+  "Claude Pro 3M",
+  "GitHub Copilot",
+  "JetBrains All Products",
+  "Antigravity AI Ultra",
 ];
 
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
@@ -45,7 +46,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 autoFocus
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search juicy skincare, squishy tints..."
+                placeholder="Search AI models, developer tools, subscriptions..."
                 className="w-full text-lg font-medium text-neutral-900 placeholder:text-neutral-400 focus:outline-none bg-transparent"
               />
               <button
@@ -58,14 +59,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
             <div className="mt-6">
               <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">
-                Trending Searches
+                Trending Software & Accounts
               </h4>
               <div className="flex flex-wrap gap-2">
                 {suggestedTags.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setSearchTerm(tag)}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 bg-neutral-100 hover:bg-[#B83226] hover:text-white px-3.5 py-1.5 rounded-full transition-colors"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 bg-neutral-100 hover:bg-[#2563EB] hover:text-white px-3.5 py-1.5 rounded-full transition-colors"
                   >
                     <span>{tag}</span>
                     <ArrowRight className="w-3.5 h-3.5 opacity-60" />
